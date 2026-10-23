@@ -1,0 +1,40 @@
+- q: Pourquoi utilise-t-on le logarithme de la vraisemblance ?
+  options:
+  - pour rendre toutes les probabilités égales
+  - pour transformer les produits en sommes et faciliter l’optimisation
+  - pour supprimer les paramètres $\theta$
+  - pour rendre la densité implicite
+  answer: 1
+  explanation: Le logarithme conserve l’ordre des valeurs positives et transforme le produit iid en somme.
+- q: 'La malédiction de la dimension signifie principalement que :'
+  options:
+  - les matrices deviennent toujours singulières
+  - le nombre de configurations possibles croît très vite avec la dimension
+  - les réseaux ne peuvent pas avoir plus de 3 couches
+  - la NLL devient nulle
+  answer: 1
+  explanation: En haute dimension, une estimation naïve de la densité nécessite énormément de données et de structure.
+- q: 'La règle de la chaîne de probabilité :'
+  options:
+  - est une approximation
+  - est une identité exacte
+  - n’est valable que pour les images
+  - n’est valable que pour des variables indépendantes
+  answer: 1
+  explanation: La factorisation par conditionnelles est une identité probabiliste exacte ; la modélisation de ces conditionnelles est la partie apprise.
+- q: 'Pour des données $x$ fixées, la quantité $p_\theta(x)$ vue comme une fonction de $\theta$ s''appelle :'
+  options:
+  - La vraisemblance
+  - La densité a priori
+  - Le posterior
+  - La fonction de partition
+  answer: 0
+  explanation: On parle de probabilité quand $\theta$ est fixé et $x$ varie, et de vraisemblance quand les données sont fixées et que l'on fait varier $\theta$.
+- q: 'Minimiser la NLL moyenne revient, quand les données sont nombreuses, à minimiser :'
+  options:
+  - $\mathrm{KL}(p_{\text{data}} \,\|\, p_\theta)$
+  - Le nombre de paramètres du modèle
+  - L'entropie de $p_\theta$ seule
+  - La variance des paramètres
+  answer: 0
+  explanation: $\mathbb{E}_{p_{\text{data}}}[-\log p_\theta(x)] = \mathrm{KL}(p_{\text{data}} \| p_\theta) + H(p_{\text{data}})$ ; l'entropie des données ne dépend pas de $\theta$.

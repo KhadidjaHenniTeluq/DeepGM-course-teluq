@@ -1,0 +1,40 @@
+- q: 'Un embedding appris est surtout :'
+  options:
+  - une copie exacte des données
+  - une représentation vectorielle dont la géométrie dépend de l’apprentissage
+  - une probabilité qui somme à 1
+  - un échantillon aléatoire
+  answer: 1
+  explanation: 'La notion centrale est la géométrie apprise : proximité et directions peuvent coder des relations utiles.'
+- q: Pourquoi une bonne reconstruction ne garantit-elle pas une bonne génération ?
+  options:
+  - Parce que le décodeur ne contient jamais de paramètres
+  - Parce que l’espace latent peut être irrégulier en dehors des codes observés
+  - Parce que toute reconstruction est forcément floue
+  - Parce qu’un modèle génératif ne peut pas utiliser de latent
+  answer: 1
+  explanation: Un autoencodeur peut reconstruire les codes produits par l’encodeur sans que des points latents arbitraires décodent correctement.
+- q: Dans un CNN de classification, où se trouve la représentation apprise utilisée pour décider ?
+  options:
+  - Dans les pixels de l'image d'entrée
+  - Dans l'étiquette prédite $\hat{y}$
+  - Dans la fonction de perte
+  - Dans le vecteur de caractéristiques de l'avant-dernière couche
+  answer: 3
+  explanation: Les couches convolutives transforment progressivement l'image ; le vecteur juste avant la couche de classification résume les motifs utiles à la tâche.
+- q: 'Dans un Transformer, l''auto-attention produit pour chaque token :'
+  options:
+  - Une probabilité unique pour toute la phrase
+  - Un vecteur fixe, identique quel que soit le contexte
+  - Une représentation contextualisée qui dépend des autres tokens de la séquence
+  - Un seul état caché résumant toute la séquence, comme un RNN
+  answer: 2
+  explanation: L'attention pondère les autres tokens pour construire, pour chaque position, un vecteur qui tient compte du contexte.
+- q: Que signifie « échantillonner » une nouvelle donnée ?
+  options:
+  - Tirer un nouvel $x$ selon une distribution, par exemple $x_{\text{new}} \sim p_\theta(x)$
+  - Recopier un exemple du jeu d'entraînement
+  - Attribuer une classe à une observation
+  - Calculer l'erreur de reconstruction d'une image
+  answer: 0
+  explanation: Échantillonner consiste à produire une nouvelle observation selon la distribution décrite par le modèle, pas à recopier ou classer une donnée existante.

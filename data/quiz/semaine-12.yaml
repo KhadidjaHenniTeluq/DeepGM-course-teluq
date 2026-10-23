@@ -1,0 +1,40 @@
+- q: 'Dans un DDPM, $t$ indique principalement :'
+  options:
+  - la classe de l’image
+  - le niveau de bruit / étape de diffusion
+  - la taille du batch
+  - la dimension du latent
+  answer: 1
+  explanation: L’embedding temporel informe le U-Net sur le niveau de bruit courant.
+- q: 'Le schedule $\beta_t$ contrôle :'
+  options:
+  - la quantité de bruit ajoutée au cours du processus direct
+  - la taille du dataset
+  - la profondeur du U-Net uniquement
+  - le nombre de classes
+  answer: 0
+  explanation: Il règle l’évolution du rapport signal/bruit.
+- q: 'Classifier-free guidance combine :'
+  options:
+  - deux datasets
+  - une prédiction conditionnelle et une prédiction non conditionnelle
+  - deux discriminateurs
+  - un flow et un GAN
+  answer: 1
+  explanation: La combinaison amplifie l’effet de la condition sans classificateur externe.
+- q: 'Dans un DDPM, le réseau est le plus souvent entraîné à prédire :'
+  options:
+  - La classe de l'image
+  - La sortie d'un discriminateur
+  - Le bruit $\varepsilon$ ajouté pour obtenir $x_t$
+  - La fonction de partition
+  answer: 2
+  explanation: La perte simplifiée est $\|\varepsilon - \varepsilon_\theta(x_t, t)\|^2$, une régression directement liée au score.
+- q: Pourquoi l'échantillonnage DDPM est-il plus lent que celui d'un GAN ?
+  options:
+  - Il doit calculer une vraisemblance exacte
+  - Il entraîne un nouveau réseau pour chaque image
+  - Il demande un appel au réseau à chaque étape de débruitage
+  - Il ne peut pas utiliser de GPU
+  answer: 2
+  explanation: Un GAN génère en un passage ; un DDPM enchaîne des centaines d'étapes, d'où l'intérêt de DDIM et d'autres accélérations.

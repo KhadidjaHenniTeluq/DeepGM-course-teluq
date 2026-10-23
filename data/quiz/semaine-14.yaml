@@ -1,0 +1,40 @@
+- q: 'Dans un LDM, la diffusion est appliquée :'
+  options:
+  - directement aux labels seulement
+  - dans l’espace latent appris par l’autoencodeur
+  - uniquement dans l’espace RGB
+  - sur la fonction de partition
+  answer: 1
+  explanation: Le cœur du LDM est la diffusion dans une représentation compressée.
+- q: 'Flow Matching apprend principalement :'
+  options:
+  - un champ de vitesse dépendant du temps
+  - un discriminateur binaire
+  - une énergie non normalisée
+  - un posterior $q(z \mid x)$
+  answer: 0
+  explanation: Le réseau approxime la vitesse qui transporte une distribution vers une autre.
+- q: Quelle distinction est la plus correcte ?
+  options:
+  - Flow Matching est toujours une SDE
+  - Flow Matching est formulé comme une ODE de transport, tandis que la diffusion est souvent introduite via un processus stochastique
+  - Diffusion et Flow Matching sont identiques
+  - Flow Matching ne peut pas utiliser de chemins liés à la diffusion
+  answer: 1
+  explanation: Flow Matching est une régression de champ de vitesse pour une dynamique ODE ; des chemins de diffusion peuvent néanmoins être utilisés.
+- q: 'Les scaling laws sont :'
+  options:
+  - des théorèmes universels exacts
+  - des relations empiriques observées entre performance et ressources
+  - une loss de diffusion
+  - des règles de production du RHM
+  answer: 1
+  explanation: Elles résument des tendances empiriques et dépendent du régime, des données et de l’architecture.
+- q: 'Un « foundation generative model » est typiquement :'
+  options:
+  - Un modèle sans aucun paramètre appris
+  - Un petit modèle entraîné pour une seule tâche
+  - Un modèle qui ne peut pas être conditionné
+  - Un grand modèle pré-entraîné sur de vastes données, adaptable à de nombreuses tâches
+  answer: 3
+  explanation: 'Pré-entraînement massif puis adaptation (conditionnement, fine-tuning) : ce compromis a un coût, d''où la question « faut-il toujours l''utiliser ? ».'

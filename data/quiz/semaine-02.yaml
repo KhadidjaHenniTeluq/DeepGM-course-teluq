@@ -1,0 +1,40 @@
+- q: Quel objectif décrit le mieux une classification directe ?
+  options:
+  - $p(x)$
+  - $p(z)$
+  - $p(y \mid x)$
+  - $p(x, y)$
+  answer: 2
+  explanation: La classification directe modélise la sortie $y$ conditionnellement à $x$.
+- q: 'Un GAN est dit implicite principalement parce que :'
+  options:
+  - il n’utilise pas de réseau
+  - il ne génère pas d’échantillons
+  - sa densité $p_\theta(x)$ n’est pas directement calculable
+  - il ne possède pas de paramètres
+  answer: 2
+  explanation: Le générateur définit une procédure d’échantillonnage sans densité tractable.
+- q: Quelle phrase est la plus correcte ?
+  options:
+  - Tout modèle génératif possède un espace latent
+  - Tout modèle génératif doit calculer $p(x)$ exactement
+  - Un modèle génératif vise à reproduire la distribution des données ou à produire des échantillons plausibles
+  - Un modèle discriminatif ne peut jamais utiliser d’embeddings
+  answer: 2
+  explanation: 'Les familles génératives diffèrent : certaines ont un latent explicite, d’autres non, certaines ont une densité calculable, d’autres non.'
+- q: 'Si deux modèles ont les mêmes représentations internes, ils ont nécessairement le même objectif probabiliste :'
+  options:
+  - Vrai
+  - Faux
+  - Vrai seulement pour les CNN
+  - Vrai seulement pour les Transformers
+  answer: 1
+  explanation: Une représentation interne ne détermine pas à elle seule l’objectif probabiliste du modèle.
+- q: 'Un modèle génératif de $p(x, y)$ permet aussi d''obtenir $p(y \mid x)$ car :'
+  options:
+  - 'C''est impossible : un modèle génératif ne peut pas classifier'
+  - $p(y \mid x)$ est toujours égal à $p(x)$
+  - Par la règle de Bayes, $p(y \mid x) = p(x, y) / p(x)$
+  - Seulement si $x$ est une variable discrète
+  answer: 2
+  explanation: 'La loi jointe contient toute l''information : en divisant par la marginale $p(x) = \sum_y p(x, y)$, on retrouve la conditionnelle utile à la décision.'

@@ -1,0 +1,40 @@
+- q: 'Dans un RHM, un latent plus haut dans l’arbre contrôle en général :'
+  options:
+  - moins de variables visibles
+  - une région plus globale
+  - uniquement un seul token
+  - aucune dépendance
+  answer: 1
+  explanation: Plus on monte dans la hiérarchie, plus l’influence s’étend sur un bloc important de feuilles.
+- q: 'StyleGAN2 remplace notamment AdaIN par :'
+  options:
+  - une factorisation auto-régressive
+  - une modulation/démodulation des poids
+  - un posterior variationnel
+  - un MMD polynomial
+  answer: 1
+  explanation: Cette modification vise notamment à réduire certains artefacts du StyleGAN original.
+- q: 'Dans StyleGAN, l''injection de bruit sert surtout à :'
+  options:
+  - Calculer la vraisemblance de l'image
+  - Ajouter une variation stochastique locale (détails fins)
+  - Choisir la classe de l'image générée
+  - Remplacer le vecteur de style $w$
+  answer: 1
+  explanation: Le bruit gère les détails aléatoires (pores, mèches…) qui n'ont pas besoin d'être codés dans $w$.
+- q: 'Une génération multi-échelle procède généralement :'
+  options:
+  - Pixel par pixel dans un ordre aléatoire
+  - Sans aucune notion d'échelle
+  - Du local vers le global uniquement
+  - Du global (structure grossière) vers le local (détails fins)
+  answer: 3
+  explanation: On fixe d'abord la structure d'ensemble, puis on raffine progressivement les détails, comme dans StyleGAN ou la diffusion.
+- q: 'Le mécanisme AdaIN de StyleGAN :'
+  options:
+  - Ajoute un terme KL à la perte
+  - Inverse exactement le générateur
+  - Normalise les activations puis applique une échelle et un biais dérivés du style $w$
+  - Masque les connexions vers les pixels futurs
+  answer: 2
+  explanation: 'AdaIN injecte le style à une résolution donnée : la normalisation efface les statistiques précédentes, puis le style impose les siennes.'

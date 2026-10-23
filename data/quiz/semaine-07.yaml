@@ -1,0 +1,40 @@
+- q: 'Le rôle principal du terme KL dans un VAE est de :'
+  options:
+  - améliorer uniquement la vitesse GPU
+  - rapprocher $q_\phi(z \mid x)$ de la prior $p(z)$
+  - rendre le décodeur inversible
+  - calculer la FID
+  answer: 1
+  explanation: La KL régularise la distribution latente.
+- q: 'L’ELBO est :'
+  options:
+  - toujours égale à $\log p(x)$
+  - une borne inférieure calculable de $\log p_\theta(x)$
+  - une métrique de diversité
+  - une loss de GAN
+  answer: 1
+  explanation: Elle rend l’apprentissage possible malgré l’intractabilité fréquente de la marginale.
+- q: 'Dans un CVAE, la condition $y$ sert à :'
+  options:
+  - supprimer le latent
+  - contrôler la génération
+  - rendre la KL symétrique
+  - calculer un Jacobien
+  answer: 1
+  explanation: Le conditionnement permet de guider la génération vers une classe ou un attribut.
+- q: 'Dans un $\beta$-VAE, prendre $\beta > 1$ tend à :'
+  options:
+  - Supprimer complètement le terme KL
+  - Rendre le décodeur inversible
+  - Améliorer systématiquement la reconstruction
+  - Renforcer la régularisation du latent, souvent au prix d'une reconstruction moins fidèle
+  answer: 3
+  explanation: Le poids $\beta$ arbitre entre reconstruction et proximité à la prior ; c'est un compromis, pas une règle absolue.
+- q: 'Pour générer une nouvelle donnée avec un VAE entraîné, on :'
+  options:
+  - Encode une image du jeu de test et on la recopie
+  - Tire $z \sim p(z) = \mathcal{N}(0, I)$ puis on décode avec $p_\theta(x \mid z)$
+  - Maximise la ELBO sur une seule image
+  - N'utilise que l'encodeur $q_\phi(z \mid x)$
+  answer: 1
+  explanation: 'La KL a rapproché les codes de la prior : un tirage dans $\mathcal{N}(0, I)$ tombe dans une région que le décodeur sait interpréter.'

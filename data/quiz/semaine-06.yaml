@@ -1,0 +1,40 @@
+- q: 'Un autoencodeur classique apprend principalement :'
+  options:
+  - une distribution explicite $p(x)$
+  - une reconstruction $x \to z \to \hat{x}$
+  - un discriminateur
+  - une fonction de partition
+  answer: 1
+  explanation: Sa tâche fondamentale est la reconstruction.
+- q: 'Le manifold est utilisé dans le cours surtout comme :'
+  options:
+  - une garantie mathématique universelle
+  - une intuition de structure de faible dimension dans un espace plus grand
+  - une fonction de perte
+  - un algorithme d’optimisation
+  answer: 1
+  explanation: C’est une intuition géométrique utile, pas une garantie générale.
+- q: 'Un latent de grande dimension garantit une meilleure génération :'
+  options:
+  - Vrai
+  - Faux
+  - Vrai seulement avec ReLU
+  - Vrai seulement sur MNIST
+  answer: 1
+  explanation: Un latent de grande dimension peut aider la reconstruction mais ne garantit ni structure ni échantillonnabilité de l’espace latent.
+- q: Quel lien prépare directement la S7 ?
+  options:
+  - PixelCNN $\to$ GAN
+  - AE déterministe $\to$ latent probabiliste du VAE
+  - RNN $\to$ Flow
+  - CNN $\to$ EBM
+  answer: 1
+  explanation: S7 ajoute une structure probabiliste au latent pour permettre la génération.
+- q: 'Le goulot d''étranglement d''un autoencodeur sert à :'
+  options:
+  - Garantir que tout $z$ aléatoire se décode correctement
+  - Supprimer l'encodeur
+  - Forcer une représentation compacte qui conserve l'information essentielle
+  - Calculer exactement $p(x)$
+  answer: 2
+  explanation: 'Avec moins de dimensions que l''entrée, le modèle ne peut pas simplement recopier $x$ : il doit compresser.'

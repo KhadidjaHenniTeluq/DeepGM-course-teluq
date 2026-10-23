@@ -1,0 +1,40 @@
+- q: 'Un GAN calcule généralement $\log p_\theta(x)$ exactement :'
+  options:
+  - Vrai
+  - Faux
+  - Vrai seulement avec DCGAN
+  - Vrai seulement avec StyleGAN
+  answer: 1
+  explanation: 'Le GAN est un modèle implicite : il échantillonne sans densité tractable.'
+- q: 'Une FID faible suffit à garantir l’absence de mode collapse :'
+  options:
+  - Vrai
+  - Faux
+  - Vrai pour MNIST
+  - Vrai si le GAN converge
+  answer: 1
+  explanation: Aucune métrique unique ne garantit tous les aspects de qualité et de diversité.
+- q: 'Le MMD compare principalement :'
+  options:
+  - des gradients de la loss GAN
+  - des distributions à travers des moyennes d’embeddings dans un RKHS
+  - des Jacobiennes inverses
+  - des posteriors VAE
+  answer: 1
+  explanation: Le MMD mesure la distance entre mean embeddings de distributions dans un espace RKHS.
+- q: 'Dans le GAN original, avec un discriminateur optimal, l''objectif du générateur est relié à :'
+  options:
+  - La divergence de Fisher
+  - La divergence de Jensen-Shannon entre $p_{\text{data}}$ et $p_G$
+  - La ELBO
+  - La distance euclidienne pixel à pixel
+  answer: 1
+  explanation: En injectant $D^*$ dans l'objectif minimax, on obtient $2\,\mathrm{JS}(p_{\text{data}} \| p_G) - \log 4$.
+- q: 'La FID compare :'
+  options:
+  - Les moyennes et covariances de features extraites des images réelles et générées
+  - Les valeurs des losses d'entraînement
+  - Les log-vraisemblances des deux modèles
+  - Le nombre de paramètres du générateur et du discriminateur
+  answer: 0
+  explanation: La FID ajuste une gaussienne aux features (Inception) des deux ensembles et mesure la distance de Fréchet entre elles.

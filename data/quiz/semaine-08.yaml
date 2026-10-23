@@ -1,0 +1,40 @@
+- q: 'Un normalizing flow doit typiquement être :'
+  options:
+  - non différentiable
+  - bijectif et différentiable
+  - stochastique à chaque couche
+  - sans Jacobien
+  answer: 1
+  explanation: L’inversion et le déterminant jacobien sont au cœur de la densité exacte.
+- q: Pourquoi RealNVP utilise-t-il des couches de couplage ?
+  options:
+  - pour rendre le déterminant jacobien facile à calculer
+  - pour supprimer les données
+  - pour empêcher la génération
+  - pour remplacer la prior
+  answer: 0
+  explanation: La structure triangulaire du Jacobien rend le log-déterminant tractable.
+- q: 'VAE et Flow ont exactement le même compromis entre inférence, vraisemblance et architecture :'
+  options:
+  - Vrai
+  - Faux
+  - Vrai sur données 2D
+  - Vrai si $p(z)$ est gaussienne
+  answer: 1
+  explanation: Le VAE utilise une inférence approchée et une ELBO ; le flow impose l’inversibilité pour une vraisemblance exacte.
+- q: 'Dans la formule du changement de variables, le terme $\log\left|\det J\right|$ corrige :'
+  options:
+  - Le choix de la classe
+  - La déformation de volume induite par la transformation
+  - Le bruit ajouté aux données
+  - Le taux d'apprentissage
+  answer: 1
+  explanation: Une transformation qui étire l'espace dilue la densité ; le déterminant du Jacobien mesure ce changement local de volume.
+- q: 'Parmi les innovations de Glow par rapport à RealNVP, on trouve :'
+  options:
+  - Un discriminateur adversarial
+  - Un posterior variationnel $q_\phi(z \mid x)$
+  - Un échantillonnage par dynamique de Langevin
+  - Des convolutions $1\times1$ inversibles (avec ActNorm)
+  answer: 3
+  explanation: Glow remplace les permutations fixes par des convolutions $1\times1$ apprises et inversibles, et ajoute la normalisation ActNorm.

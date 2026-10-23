@@ -1,0 +1,40 @@
+- q: 'Dans un EBM, une configuration plausible doit idéalement avoir :'
+  options:
+  - une énergie faible
+  - une énergie infinie
+  - une énergie toujours nulle
+  - une énergie indépendante de $x$
+  answer: 0
+  explanation: Une faible énergie correspond à une densité relative élevée.
+- q: 'La fonction de partition $Z(\theta)$ sert principalement à :'
+  options:
+  - échantillonner $z$
+  - normaliser la densité
+  - calculer la FID
+  - entraîner un discriminateur
+  answer: 1
+  explanation: Elle convertit $\exp(-E)$ en distribution normalisée.
+- q: 'La divergence contrastive est historiquement utilisée pour :'
+  options:
+  - approximer l’apprentissage d’EBM/RBM en limitant l’échantillonnage
+  - entraîner les Transformers
+  - calculer un Jacobien exact
+  - conditionner un GAN
+  answer: 0
+  explanation: Elle remplace une chaîne MCMC longue par quelques étapes à partir des données.
+- q: Pourquoi le gradient de la log-vraisemblance d'un EBM demande-t-il des échantillons du modèle ?
+  options:
+  - Parce que les données sont inconnues
+  - Parce qu'un EBM n'a pas de paramètres
+  - Parce que la dérivée de $\log Z(\theta)$ est une espérance sous $p_\theta$
+  - Parce que l'énergie n'est pas différentiable
+  answer: 2
+  explanation: '$\nabla_\theta \log Z(\theta) = -\mathbb{E}_{x'' \sim p_\theta}[\nabla_\theta E_\theta(x'')]$ : c''est la phase négative, estimée par MCMC.'
+- q: 'Une machine de Boltzmann restreinte (RBM) possède :'
+  options:
+  - Des couches de couplage inversibles
+  - Un encodeur et un décodeur gaussiens
+  - Un générateur et un discriminateur
+  - Des unités visibles et cachées, sans connexion à l'intérieur d'une même couche
+  answer: 3
+  explanation: L'absence de connexions intra-couche rend les conditionnelles factorisées, ce qui permet un échantillonnage de Gibbs par blocs.

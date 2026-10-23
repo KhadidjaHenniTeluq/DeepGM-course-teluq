@@ -1,0 +1,40 @@
+- q: 'Dans un modèle latent, l’inférence consiste à :'
+  options:
+  - choisir le nombre d’époques
+  - estimer $z$ à partir de $x$
+  - calculer seulement $p(x)$
+  - échantillonner les poids du réseau
+  answer: 1
+  explanation: Le problème central est le posterior $p(z \mid x)$.
+- q: Pourquoi introduit-on $q_\phi(z \mid x)$ ?
+  options:
+  - pour remplacer les données
+  - pour approximer un posterior difficile à calculer
+  - pour rendre $p(z)$ uniforme
+  - pour supprimer le décodeur
+  answer: 1
+  explanation: L’inférence variationnelle introduit une famille $q_\phi$ plus maniable que le posterior exact.
+- q: Si la densité jointe $p_\theta(x,z)$ est facile à évaluer point par point, cela garantit-il que la marginale $p_\theta(x)=\int p_\theta(x,z)\,dz$ est tractable ?
+  options:
+  - Vrai
+  - Faux
+  - Vrai seulement si $z$ est continu
+  - Vrai seulement si le dataset est grand
+  answer: 1
+  explanation: Même si la densité jointe est calculable point par point, l’intégration (ou la sommation) sur toutes les valeurs possibles de $z$ peut être intractable. C’est précisément une difficulté fréquente des modèles à variables latentes.
+- q: 'Dans $p_\theta(x) = \int p_\theta(x \mid z)\, p(z)\, dz$, le terme $p(z)$ est :'
+  options:
+  - Le posterior
+  - La vraisemblance des données
+  - La loi a priori (prior) sur le latent
+  - Le décodeur
+  answer: 2
+  explanation: $p(z)$ décrit la distribution du latent avant d'observer $x$ ; le posterior $p(z \mid x)$ est obtenu après observation.
+- q: Dans un modèle à variables latentes, quelle phrase distingue correctement apprentissage et inférence ?
+  options:
+  - L'inférence ajuste $\theta$ ; l'apprentissage estime $z$
+  - L'apprentissage ajuste $\theta$ ; l'inférence estime $z$ pour une observation $x$
+  - L'inférence ne sert qu'à générer de nouvelles données
+  - Ce sont deux noms pour la même opération
+  answer: 1
+  explanation: 'Les deux tâches sont liées mais différentes : ajuster les paramètres du modèle d''un côté, retrouver le posterior $p(z \mid x)$ de l''autre.'

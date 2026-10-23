@@ -1,0 +1,48 @@
+- q: Pourquoi utiliser un même dataset fil rouge pour plusieurs familles ?
+  options:
+  - pour garantir que tous les modèles auront la même loss
+  - pour rendre les comportements plus comparables
+  - pour supprimer le besoin de métriques
+  - pour éviter tout prétraitement
+  answer: 1
+  explanation: Un terrain commun permet de comparer reconstruction, diversité, vitesse et qualité sous des données identiques.
+- q: Pourquoi garder malgré tout des toy datasets 2D ?
+  options:
+  - ils donnent toujours de meilleurs scores
+  - ils rendent visibles densités, champs, trajectoires et modes
+  - ils remplacent tous les datasets réels
+  - ils rendent les GAN explicites
+  answer: 1
+  explanation: Ils sont particulièrement adaptés aux concepts géométriques comme flows, EBM, score et Flow Matching.
+- q: 'Le meilleur projet final est nécessairement celui avec le modèle le plus complexe :'
+  options:
+  - Vrai
+  - Faux
+  - Vrai pour diffusion
+  - Vrai si un GPU est disponible
+  answer: 1
+  explanation: La qualité d’une question scientifique, du protocole et de l’analyse est plus importante que la complexité.
+- q: 'Si un modèle échoue à converger, le projet est automatiquement invalide :'
+  options:
+  - Vrai
+  - Faux
+  - Vrai pour les GAN
+  - Vrai pour les VAE
+  answer: 1
+  explanation: Un échec bien diagnostiqué, comparé à une baseline et analysé peut fournir une conclusion scientifique valable.
+- q: 'Comparer VAE et GAN uniquement avec leur loss d’entraînement est :'
+  options:
+  - suffisant
+  - insuffisant, car les losses n’ont pas la même interprétation
+  - toujours impossible
+  - équivalent à la FID
+  answer: 1
+  explanation: Les objectifs d’apprentissage diffèrent et ne sont pas directement comparables numériquement.
+- q: Quel principe résume le mieux le cours entier ?
+  options:
+  - toutes les familles cherchent la même loss
+  - il faut relier représentation, distribution, apprentissage, échantillonnage et évaluation
+  - les modèles implicites dominent toujours
+  - la vraisemblance suffit à tout évaluer
+  answer: 1
+  explanation: Le cours vise à comprendre les compromis entre représentation, objectif probabiliste, entraînement, génération et évaluation.

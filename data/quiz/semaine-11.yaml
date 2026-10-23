@@ -1,0 +1,40 @@
+- q: 'Le score $s(x) = \nabla_x \log p(x)$ est :'
+  options:
+  - un scalaire dans toute dimension
+  - un champ de vecteurs de même dimension que $x$
+  - la fonction de partition
+  - une probabilité normalisée
+  answer: 1
+  explanation: Le gradient par rapport à $x$ a la même dimension que $x$.
+- q: Pourquoi le score matching évite-t-il la fonction de partition d’un EBM ?
+  options:
+  - parce qu’on ne dérive jamais
+  - parce que $\nabla_x \log Z(\theta) = 0$
+  - parce que $Z = 1$
+  - parce que le score est toujours nul
+  answer: 1
+  explanation: La constante de normalisation ne dépend pas de $x$.
+- q: 'Le DSM apprend directement :'
+  options:
+  - le score de la distribution bruitée via une cible construite avec le bruit
+  - le Jacobien complet du réseau
+  - la FID
+  - une vraisemblance exacte
+  answer: 0
+  explanation: Le bruit gaussien donne une cible analytique de débruitage/score.
+- q: Pourquoi le score matching de Hyvärinen devient-il coûteux en haute dimension ?
+  options:
+  - Il faut maximiser une ELBO
+  - Il faut calculer la trace du Jacobien du score (dérivées secondes)
+  - Il faut calculer la fonction de partition $Z(\theta)$
+  - Il faut entraîner un discriminateur
+  answer: 1
+  explanation: Le terme $\mathrm{tr}(\nabla_x s_\theta(x))$ demande une rétropropagation par dimension ; DSM et sliced SM contournent ce coût.
+- q: 'Une étape de dynamique de Langevin s''écrit :'
+  options:
+  - $x \leftarrow G_\theta(z)$ avec $z \sim \mathcal{N}(0, I)$
+  - $x \leftarrow f^{-1}(x)$
+  - $x \leftarrow x + \eta\, s_\theta(x) + \sqrt{2\eta}\,\varepsilon$, avec $\varepsilon \sim \mathcal{N}(0, I)$
+  - $x \leftarrow x - \eta\, \nabla_\theta \mathcal{L}$
+  answer: 2
+  explanation: On suit le score vers les régions probables, et le bruit injecté permet d'explorer la distribution au lieu de converger vers un seul mode.
