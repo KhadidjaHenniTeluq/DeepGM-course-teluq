@@ -1,0 +1,40 @@
+- q: 'La vraisemblance d’un modèle auto-régressif est dite exacte parce que :'
+  options:
+  - la génération se fait en un seul pas
+  - la loi jointe est un produit de conditionnelles calculables
+  - le modèle n’a aucun latent
+  - les pixels sont indépendants
+  answer: 1
+  explanation: La factorisation permet d’évaluer $p(x)$ comme produit de conditionnelles explicites.
+- q: 'La principale limite pratique des modèles auto-régressifs est souvent :'
+  options:
+  - l’absence totale de vraisemblance
+  - la génération séquentielle
+  - l’impossibilité de traiter des images
+  - l’absence de gradients
+  answer: 1
+  explanation: Chaque composante générée dépend des précédentes.
+- q: 'Pour des pixels binaires, la conditionnelle $p_\theta(x_i \mid x_{<i})$ est typiquement :'
+  options:
+  - Une Bernoulli dont le paramètre est produit par une sigmoïde
+  - Un softmax sur toutes les images possibles
+  - Une gaussienne de variance fixe
+  - Un discriminateur réel/faux
+  answer: 0
+  explanation: Le réseau calcule un score réel, transformé par $\sigma(\cdot)$ en $\hat{x}_i = p_\theta(x_i = 1 \mid x_{<i})$.
+- q: Comment MADE rend-il un autoencodeur auto-régressif ?
+  options:
+  - En entraînant un discriminateur
+  - En masquant des connexions pour que chaque sortie ne dépende que des entrées précédentes
+  - En ajoutant un terme KL à la perte
+  - En supprimant le décodeur
+  answer: 1
+  explanation: Les masques imposent la structure $x_{<i} \to x_i$ tout en calculant toutes les conditionnelles en un seul passage.
+- q: 'Par rapport à FVSBN, NADE améliore principalement :'
+  options:
+  - Le calcul d'un Jacobien triangulaire
+  - La suppression de l'ordre des variables
+  - Le partage d'une représentation cachée entre les conditionnelles
+  - La génération en un seul passage
+  answer: 2
+  explanation: FVSBN utilise une logistique indépendante par variable ; NADE partage des poids et une couche cachée, ce qui réduit les paramètres et améliore la généralisation.

@@ -1,0 +1,10 @@
+<div class="course-video">
+{{- with .Get "youtube" }}
+  <iframe src="https://www.youtube-nocookie.com/embed/{{ . }}" title="Vidéo d'introduction" allowfullscreen loading="lazy"></iframe>
+{{- else }}
+  <video controls preload="metadata" playsinline {{ with $.Get "poster" }}poster="{{ . | relURL }}"{{ end }}>
+    <source src="{{ $.Get "src" | relURL }}" type="video/mp4">
+    Votre navigateur ne peut pas lire cette vidéo. <a href="{{ $.Get "src" | relURL }}">Télécharger la vidéo</a>.
+  </video>
+{{- end }}
+</div>

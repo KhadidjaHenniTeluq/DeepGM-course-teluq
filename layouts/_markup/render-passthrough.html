@@ -1,0 +1,9 @@
+{{- $opts := dict "output" "htmlAndMathml" "displayMode" (eq .Type "block") "throwOnError" false -}}
+{{- with try (transform.ToMath .Inner $opts) -}}
+  {{- with .Err -}}
+    {{- warnf "Formule KaTeX non rendue (%s) : %s" $.Position . -}}
+    <code>{{ $.Inner }}</code>
+  {{- else -}}
+    {{- .Value -}}
+  {{- end -}}
+{{- end -}}

@@ -1,0 +1,53 @@
+{{- $id := .Get 0 -}}
+{{- $qs := index hugo.Data.quiz $id -}}
+{{- $page := .Page -}}
+<form class="course-quiz" data-quiz="{{ $id }}" onsubmit="return false;">
+{{- range $i, $q := $qs }}
+  <fieldset class="quiz-q" data-answer="{{ $q.answer }}">
+    <legend><span class="quiz-num">Question {{ add $i 1 }}</span> {{ $page.RenderString $q.q }}</legend>
+    {{- range $j, $o := $q.options }}
+    <label class="quiz-opt"><input type="radio" name="{{ $id }}-q{{ $i }}" value="{{ $j }}"> <span class="quiz-letter">{{ index (slice "A" "B" "C" "D" "E" "F") $j }}.</span> <span>{{ $page.RenderString $o }}</span></label>
+    {{- end }}
+    <div class="quiz-feedback" hidden>
+      <p class="quiz-verdict"></p>
+      <p class="quiz-expl">{{ $page.RenderString $q.explanation }}</p>
+    </div>
+  </fieldset>
+{{- end }}
+  <div class="quiz-actions">
+    <button type="button" class="book-btn quiz-check">Vérifier mes réponses</button>
+    <button type="button" class="book-btn quiz-reset">Recommencer</button>
+    <span class="quiz-score" aria-live="polite"></span>
+  </div>
+</form>
+<script>
+(function () {
+  var form = document.currentScript.previousElementSibling;
+  var letters = "ABCDEF";
+  form.querySelector(".quiz-check").addEventListener("click", function () {
+    var qs = form.querySelectorAll(".quiz-q"), ok = 0, answered = 0;
+    qs.forEach(function (q) {
+      var good = q.getAttribute("data-answer");
+      var sel = q.querySelector("input:checked");
+      var fb = q.querySelector(".quiz-feedback"), v = q.querySelector(".quiz-verdict");
+      q.querySelectorAll(".quiz-opt").forEach(function (l) { l.classList.remove("is-good", "is-bad"); });
+      q.querySelectorAll("input")[good].parentNode.classList.add("is-good");
+      if (sel) {
+        answered++;
+        if (sel.value === good) { ok++; v.textContent = "Bonne réponse."; q.className = "quiz-q ok"; }
+        else { sel.parentNode.classList.add("is-bad"); v.textContent = "Pas tout à fait. La bonne réponse est " + letters[good] + "."; q.className = "quiz-q ko"; }
+      } else { v.textContent = "Sans réponse. La bonne réponse est " + letters[good] + "."; q.className = "quiz-q ko"; }
+      fb.hidden = false;
+    });
+    form.querySelector(".quiz-score").textContent = "Score : " + ok + " / " + qs.length;
+  });
+  form.querySelector(".quiz-reset").addEventListener("click", function () {
+    form.reset();
+    form.querySelectorAll(".quiz-q").forEach(function (q) {
+      q.className = "quiz-q"; q.querySelector(".quiz-feedback").hidden = true;
+      q.querySelectorAll(".quiz-opt").forEach(function (l) { l.classList.remove("is-good", "is-bad"); });
+    });
+    form.querySelector(".quiz-score").textContent = "";
+  });
+})();
+</script>
